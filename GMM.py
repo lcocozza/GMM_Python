@@ -57,13 +57,13 @@ def search_color_shape(tab_user,tab_combi,nb_play):
 
 
 def test(tab_combi, enter,):
-    
+
 
 
 def return_combination (colors = ['red','blue','yellow'],shapes=['&','?','$'],nb_play = 4):
     tab_user=[[0,0]for i in range(nb_play)]
     color, shape ='',''
-    
+
     for i in range (nb_play):
         color = input('Entrez la couleur : ')
         shape = input('Entrez la forme : ')
@@ -71,35 +71,3 @@ def return_combination (colors = ['red','blue','yellow'],shapes=['&','?','$'],nb
         tab_user[i][1] = search_in_tab(shapes,shape)
 
     return tab_user
-
-
-
-        
-        
-
-
-def main ():
-    colors=[]
-    shapes=[]
-    nb_play =0
-    tab_combi = []
-    
-
-
-
-    
-    nb_play=int(input('Rentrez le nombre de case: '))
-    for i in range(int(input('Entrez le nombre de couleur de jeu: '))) :
-        colors.append(input('Entrez la couleur : '))
-    for i in range(int(input('Entrez le nombre de forme de jeu: '))) :
-        shapes.append(input('Entrez la forme : '))
-
-    tab_combi=random_combination(colors,shapes,nb_play)
-
-    #print(tab_combi)
-    
-    
-    
-
-if __name__ == '__main__' :
-    main()

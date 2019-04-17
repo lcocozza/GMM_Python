@@ -1,6 +1,3 @@
-#!/usr/bin/python3.7
-# -*-coding:Utf-8 -*
-
 def check_file(filename):
     exist = True
     try:
@@ -12,20 +9,22 @@ def check_file(filename):
         fd_file.close()
     return exist
 
-def player_score(name, add=0):
+
+def player_score(add=0):
+    global pseudo
     if check_file("scores.ini") == False:
-        score = {name: 0 + add}
+        score = {pseudo: 0 + add}
     else:
         fd_file = open("scores.ini", "rb")
         file_unpick = Unpickler(fd_file)
         score = file_unpick.load()
         fd_file.close()
-        if name in score:
-            score[name] += add
+        if pseudo in score:
+            score[pseudo] += add
         else:
-            score[name] = add
+            score[pseudo] = add
     fd_file = open("scores.ini", "wb")
     file_pick = Pickler(fd_file)
     file_pick.dump(score)
     fd_file.close()
-    return score[name]
+    return score[pseudo]
