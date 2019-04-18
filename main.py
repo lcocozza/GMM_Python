@@ -5,8 +5,9 @@ from ft_file.ft_init import *
 from ft_file.ft_gmm import *
 
 def main():
-    name = init_gmm()
-    gmm()
+    hidden_comb = init_gmm()
+    print(hidden_comb)
+    gmm(hidden_comb)
 
 if __name__ == "__main__":
     main()

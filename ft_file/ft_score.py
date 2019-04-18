@@ -1,3 +1,5 @@
+from pickle import *
+
 def check_file(filename):
     exist = True
     try:
@@ -10,8 +12,7 @@ def check_file(filename):
     return exist
 
 
-def player_score(add=0):
-    global pseudo
+def player_score(pseudo, add=0):
     if check_file("scores.ini") == False:
         score = {pseudo: 0 + add}
     else:

@@ -1,7 +1,14 @@
 from Global.data import *
 
-def gmm():
-    comb = ask_comb()
+def gmm(hidden_comb):
+    turn = 0
+    comb = ""
+    liste = []
+    while comb != hidden_comb:
+        comb = ask_comb()
+        liste.append(comb)
+        print_list(liste)
+        turn += 1
 
 
 def ask_comb():
@@ -9,6 +16,7 @@ def ask_comb():
     while good is False:
         try:
             comb = input("<> Enter combination : ")
+            comb = comb.upper()
             assert good_format(comb) == True
         except AssertionError:
             print("Tu t'es nique Roger.")
@@ -36,6 +44,5 @@ def good_format(string):
 
 
 def print_list(liste):
-    i = 0
-    while i < len(liste):
+    for i in range(len(liste)):
         print(liste[i])
