@@ -1,17 +1,14 @@
 from Global.data import *
-from ft_file.ft_score import *
 from random import randrange as rr
 
 def init_gmm():
     pseudo = player_pseudo()
-    score = player_score(pseudo)
-    print("Welcome {}, your current score is {}.".format(pseudo, score))
     print("""===========================================================
     GRAND MASTER MIND : play the Grand Master Mind game
   Note : enter an empty line to stop the interaction loop
 ===========================================================""")
     get_settings()
-    return gen_comb()
+    return gen_comb(), pseudo
 
 
 def player_pseudo():
@@ -64,14 +61,27 @@ def set_settings(config):
 
 
 def gen_comb():
-    i = 0
     global settings
+    i = 0
     hidden_comb = []
     size = settings["size"]
     while i < size:
-        hidden_comb.append(settings["letters"][rr(size)])
-        hidden_comb.append(settings["digits"][rr(size)])
+        hidden_comb.append(settings["letters"][rr(len(settings["letters"]))])
+        hidden_comb.append(settings["digits"][rr(len(settings["digits"]))])
         if i < (size - 1):
             hidden_comb.append(' ')
         i += 1
     return "".join(hidden_comb)
+
+
+def replay_gmm():
+    good = False
+    while good is False:
+        try:
+            retry = input("do you want retry ? [y/n]: ").lower()
+            assert retry == 'y' or retry == 'n'
+        except AssertionError:
+            print("please enter 'y' or 'n'")
+        else:
+            good = True
+    return True if retry == 'y' else False
