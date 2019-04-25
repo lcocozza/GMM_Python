@@ -8,7 +8,6 @@ def main():
     replay = True
     while replay is True:
         hidden_comb, pseudo = init_gmm()
-        print(hidden_comb, pseudo)
         gmm(hidden_comb, pseudo)
         replay = replay_gmm()
 
